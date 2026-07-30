@@ -72,3 +72,24 @@ No change to `createFrameLink`, `FrameLinkOptions`, `FrameLink`, or `useConnecti
 FLINK-T-0016 executes a code change **only if this verdict is (b) "Minimal change required."** Because this verdict is **(a) "Sufficient as-is,"** FLINK-T-0016 must **record "sufficient as-is" and make no code change.** No API addition is handed downstream.
 
 _(If future demonstrated evidence — e.g. a real editor scenario where `onLoad` + per-request timeouts prove inadequate — reopens this, the minimal shape to consider first would be an additive optional `onStatusChange?: (status: "connected" | "disconnected") => void` in `FrameLinkOptions`, purely additive and backward-compatible. That is **not** proposed here and is out of scope for FLINK-T-0016; it would require its own documented decision per NFR-001. If it required a persistent heartbeat + reconnect state machine, that is larger than minimal and would be an **ESCALATION**, not a fold-in.)_
+
+---
+
+## FLINK-T-0016 outcome — No change required
+
+**Decision:** Per the VERDICT above (**(a) Sufficient as-is**), the conditional API
+extension task FLINK-T-0016 makes **no code change**. This is an explicitly valid,
+successful completion — the transport-not-application principle and NFR-001 forbid
+inventing an addition to justify the task.
+
+- No file under `src/` was modified.
+- The existing public API (`createFrameLink`, `FrameLink`, `FrameLinkOptions`,
+  `useConnection`) is unchanged and remains the confirmed-sufficient transport surface
+  for the SIFR Stardust Iframe Adapter.
+- If future evidence reopens the question, the first minimal shape to evaluate would be
+  an additive optional `onStatusChange?: (status: "connected" | "disconnected") => void`
+  in `FrameLinkOptions` (explicitly **not** implemented here); a persistent heartbeat
+  would be an escalation, not a minimal change.
+
+**Frame Link is confirmed sufficient to back the Stardust Iframe Adapter without
+reintroducing a custom `postMessage` hook.**
