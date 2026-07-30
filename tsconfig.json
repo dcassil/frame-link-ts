@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // Target & Module
+    "target": "ES2023",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+
+    // Emit
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // STRICT TYPE CHECKING - Maximum strictness, no compromise
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // Master strict flag (enables all below)
+    "strict": true,
+
+    // Explicit strict flags for documentation
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "strictBuiltinIteratorReturn": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // ADDITIONAL TYPE CHECKS - Catch more issues at compile time
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // Unused code detection
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // Optional property strictness
+    "exactOptionalPropertyTypes": true,
+
+    // Return type checking
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Index access safety
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
+
+    // Override keyword requirement
+    "noImplicitOverride": true,
+
+    // Unreachable code
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // MODULE INTEROP
+    // ═══════════════════════════════════════════════════════════════════════
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // EMIT CONTROL
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // Don't emit on error
+    "noEmitOnError": true,
+
+    // Remove comments in output (cleaner dist)
+    "removeComments": true,
+
+    // Import helpers from tslib
+    "importHelpers": true,
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // PERFORMANCE & COMPATIBILITY
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // Skip lib check for faster builds
+    "skipLibCheck": true,
+
+    // Types
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+
+    // Base URL for module resolution
+    "baseUrl": "src/",
+
+    // Resolve JSON modules
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "dist", "coverage"]
+}
